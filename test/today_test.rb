@@ -22,16 +22,16 @@ class TodayTest < Test::Unit::TestCase
   end
 
   def test_initialize
-    assert_equal TodayTest.empty.session, Today.initial_state[:session]
+    assert_equal Today.resetAndCreate.session, Today.initial_state[:session]
   end
 
   def test_todos
-    t = TodayTest.empty
+    t = Today.resetAndCreate
     assert_instance_of Todos, t.todos
   end
 
-  def self.empty
-    FileUtils.rm_rf Today.folder
-    Today.new
-  end
+  # def self.empty
+  #   FileUtils.rm_rf Today.folder
+  #   Today.new
+  # end
 end

@@ -17,6 +17,7 @@ def parseArgs(args)
   elsif args[0] == "add"
     if args.length < 2 
       # TODO: ask title
+      { cmd: "add_todo", title: 'TODO: ask title'}
     else
       { cmd: "add_todo", title: args[1] }
     end

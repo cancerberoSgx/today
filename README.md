@@ -70,3 +70,6 @@ Nice to have: optionally synchronize today's TODO with trello instead of keeping
 
 Nice to have: if user gives an extra number argument, the action will apply to other day than today, for example `today calendar 1` will show tomorrow's activities, or, `today -1` will show yesterday's TODOs.
 
+# Ideas
+
+ * `today set dev`  sets a session so the following commands acts against it

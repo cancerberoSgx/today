@@ -1,10 +1,11 @@
 # typed: ignore
 
-# List of todos
+# List of todos. delegates rendering to TodoRenderer
 class Todos
   attr_reader :todos
   def initialize todos
     @todos = todos
+    @renderer = TodoRenderer.new
   end
   def add(todo)
     @todos.push(todo)
@@ -17,17 +18,12 @@ class Todos
   end
   def print
     if @todos.empty?
-      'No tasks'
+      @renderer.empty
     else
-      todos = @todos.map {|todo| todo.print}
+      todos = @renderer.list(@todos)
       todos.join '\n'
     end
   end
-  # sig {params(todo: Todo).returns(nil?)}
-  # @todos = []
-  # def todos
-  #   @todos.map {|todo| {title: todo.title}}
-  # end
 end
 
 # to-do representation
@@ -45,6 +41,28 @@ class Todo
     "#{@checked ? '[x]' : '[ ]'} #{@title}"
   end
 end
+
+# default Todo renderer (command line strings). subclass it to customize checkboxes, labels, etc
+class TodoRenderer
+  def render(todo)
+    " #{checked(todo)} #{title(todo)}"
+  end
+  def checked(todo)
+    "#{todo.checked ? '[x]' : '[ ]'}"
+  end
+  def title(todo)
+    "#{todo.title}"
+  end
+  # render a list of todos
+  def list(todos)
+    todos.map {|todo| render(todo)}
+  end
+  # no-tasks message
+  def empty
+    'No tasks'
+  end
+end
+
 
 # require 'json'
 # puts JSON.parse('{"a": 123w}')

@@ -12,7 +12,7 @@ class Today
     Today.initialize
     s = File.open(Today.file, 'r').read
     data = JSONParse(s)
-    @todos = Todos.new data['todos'].map {|todo| Todo.new todo.title, todo.description, todo.checked}
+    @todos = Todos.new data['todos'].map {|todo| Todo.new todo['title'], todo['description'], todo['checked']}
     @session = data['session']
   end
 
@@ -23,15 +23,18 @@ class Today
     }
   end
 
-  def self.initialize
-    FileUtils.mkdir_p folder unless File.directory?(folder)
-    s = JSONStringify(initial_state)
-    File.open(file, 'w') { |f| f.puts(s) } unless File.exist? file
+  def save
+    File.open(Today.file, 'w') { |f| f.puts JSONStringify(serialize) } 
   end
 
-  def self.initial_state
+  def self.initialize(session='default')
+    FileUtils.mkdir_p folder unless File.directory?(folder)
+    File.open(file, 'w') { |f| f.puts JSONStringify(initial_state session) } unless File.exist? file
+  end
+
+  def self.initial_state(session='default')
     {
-      session: 'default',
+      session: session,
       todos: []
     }
   end
@@ -46,5 +49,13 @@ class Today
 
   def self.today_id
     Time.now.strftime('%Y-%m-%d')
+  end
+
+  def self.reset
+    FileUtils.rm_rf Today.folder
+  end
+  def self.resetAndCreate
+    reset
+    Today.new
   end
 end
