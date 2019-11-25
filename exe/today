@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require "rufo"
+require_relative '../src/main'
 
-Rufo::Command.run(ARGV)
+main

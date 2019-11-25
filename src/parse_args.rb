@@ -15,7 +15,11 @@ def parseArgs(args)
   if args.length == 0
     { cmd: "list_todos" }
   elsif args[0] == "add"
-    { cmd: "add_todo" }
+    if args.length < 2 
+      # TODO: ask title
+    else
+      { cmd: "add_todo", title: args[1] }
+    end
   elsif args[0] == "help"
     { cmd: "help" }
   elsif args[0] == "check"

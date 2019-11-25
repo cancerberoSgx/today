@@ -15,6 +15,14 @@ class Todos
   def serialize
     @todos.map {|todo| todo.serialize}
   end
+  def print
+    if @todos.empty?
+      'No tasks'
+    else
+      todos = @todos.map {|todo| todo.print}
+      todos.join '\n'
+    end
+  end
   # sig {params(todo: Todo).returns(nil?)}
   # @todos = []
   # def todos
@@ -32,6 +40,9 @@ class Todo
   end
   def serialize
     {title: @title, description: @description, checked: @checked}
+  end
+  def print
+    "#{@checked ? '[x]' : '[ ]'} #{@title}"
   end
 end
 
