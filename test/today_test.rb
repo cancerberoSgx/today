@@ -1,9 +1,9 @@
 # typed: true
+# require "test/unit/assertions"
 require "test/unit"
+include Test::Unit::Assertions
 require_relative '../src/today'
 require_relative '../src/todo'
-
-include Test::Unit::Assertions
 require 'fileutils'
 
 class TodayTest < Test::Unit::TestCase

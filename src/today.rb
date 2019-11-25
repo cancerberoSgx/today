@@ -6,6 +6,7 @@ require_relative 'todo'
 
 # TODO
 class Today
+  attr_reader :data
 
   def initialize
     Today.initialize
@@ -13,9 +14,9 @@ class Today
     @data = JSONParse(s)
   end
 
-  def data
-    @data
-  end
+  # def data
+  #   @data
+  # end
 
   def todos
     Todos.new @data['todos'].map {|todo| Todo.new todo.title, todo.description}
