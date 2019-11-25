@@ -1,6 +1,8 @@
+# typed: ignore
+
 require 'fileutils'
-# require './util'
-require_relative './util'
+require_relative 'util'
+require_relative 'todo'
 
 # TODO
 class Today
@@ -13,6 +15,10 @@ class Today
 
   def data
     @data
+  end
+
+  def todos
+    Todos.new @data['todos'].map {|todo| Todo.new todo.title, todo.description}
   end
 
   def self.initialize
@@ -28,12 +34,10 @@ class Today
     }
   end
 
-  # @return [String]
   def self.folder
     File.join ENV['HOME'], '.today'
   end
 
-  # @return [String]
   def self.file
     File.join folder, "#{today_id}.json"
   end

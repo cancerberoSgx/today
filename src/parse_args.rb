@@ -1,3 +1,6 @@
+# typed: true
+
+# examples: 
 # today
 # today help
 # today add "optimize addToCart()"
@@ -8,30 +11,19 @@
 # today share foo@bar.com,a@another.com
 # today calendar
 # today calendar 1
-
 def parseArgs(args)
   if args.length == 0
-    {
-        cmd: "list_todos",
-    }
+    { cmd: "list_todos" }
   elsif args[0] == "add"
-    return {
-        cmd: "add_todo",
-    }
+    { cmd: "add_todo" }
   elsif args[0] == "help"
-    return {
-        cmd: "help",
-    }
+    { cmd: "help" }
   elsif args[0] == "check"
-    return {
-        cmd: "check_todo",
-    }
+    { cmd: "check_todo" }
   elsif args[0] == "share"
-    return {
-        cmd: "share_todos",
-    }
+    { cmd: "share_todos" }
   else
-    return {}
+    {}
   end
 end
 

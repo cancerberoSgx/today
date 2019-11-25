@@ -1,10 +1,12 @@
+# typed: true
 require "test/unit"
 require_relative '../src/today'
+require_relative '../src/todo'
 
 include Test::Unit::Assertions
 require 'fileutils'
 
-class HelloTest < Test::Unit::TestCase
+class TodayTest < Test::Unit::TestCase
   def test_folder
     assert_true Today.folder.end_with? '/.today'
   end
@@ -21,18 +23,16 @@ class HelloTest < Test::Unit::TestCase
   end
 
   def test_initialize
+    assert_equal TodayTest.empty.data['session'], Today.initial_state[:session]
+  end
+
+  def test_todos
+    t = TodayTest.empty
+    assert_instance_of Todos, t.todos
+  end
+
+  def self.empty
     FileUtils.rm_rf Today.folder
-    assert_false File.exists? Today.folder
-    today = Today.new
-    # puts today.data
-    # d = today.data
-    # assert_equal 1, 1 
-    # puts 1, today.data
-    # puts 2, Today.initial_state
-    # puts 1, today.data['session']
-    # puts 2, Today.initial_state['session']
-    # puts 'end'
-    assert_equal today.data['session'], Today.initial_state[:session]
-    # assert_equal (String today.data), (String Today.initial_state)
+    Today.new
   end
 end

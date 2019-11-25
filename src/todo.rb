@@ -1,20 +1,27 @@
+# typed: ignore
+
 # List of todos
 class Todos
-  def initialize
-    @list = []
+  # @todos = []
+  # def todos
+  #   @todos.map {|todo| {title: todo.title}}
+  # end
+  attr_reader :todos
+  def initialize todos
+    @todos = todos
   end
-
-  # @param [Todo] todo
+  # sig {params(todo: Todo).returns(nil?)}
   def add(todo)
-    1
+    @todos.push(todo)
   end
 end
 
 # to-do representation
 class Todo
-  def initialize
-    @title = 'Unnamed TODO'
-    @description = 'TODO'
+  attr_reader :title, :description
+  def initialize(title='Untitled', description='TODO')
+    @title = title
+    @description = description
   end
 end
 
