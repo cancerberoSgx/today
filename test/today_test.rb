@@ -1,5 +1,4 @@
 # typed: true
-# require "test/unit/assertions"
 require "test/unit"
 include Test::Unit::Assertions
 require_relative '../src/today'
@@ -23,7 +22,7 @@ class TodayTest < Test::Unit::TestCase
   end
 
   def test_initialize
-    assert_equal TodayTest.empty.data['session'], Today.initial_state[:session]
+    assert_equal TodayTest.empty.session, Today.initial_state[:session]
   end
 
   def test_todos

@@ -6,20 +6,21 @@ require_relative 'todo'
 
 # TODO
 class Today
-  attr_reader :data
+  attr_reader :todos, :session
 
-  def initialize
+  def initialize(session=Today.initial_state['session'])
     Today.initialize
     s = File.open(Today.file, 'r').read
-    @data = JSONParse(s)
+    data = JSONParse(s)
+    @todos = Todos.new data['todos'].map {|todo| Todo.new todo.title, todo.description, todo.checked}
+    @session = data['session']
   end
 
-  # def data
-  #   @data
-  # end
-
-  def todos
-    Todos.new @data['todos'].map {|todo| Todo.new todo.title, todo.description}
+  def serialize
+    {
+      session: @session,
+      todos: @todos.serialize
+    }
   end
 
   def self.initialize

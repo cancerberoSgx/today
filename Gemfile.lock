@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    filewatcher (1.1.1)
+      optimist (~> 3.0)
+    optimist (3.0.0)
     rainbow (3.0.0)
     sorbet (0.4.5059)
       sorbet-static (= 0.4.5059)
@@ -11,6 +14,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  filewatcher
   rainbow (~> 3.0)
   sorbet
   sorbet-runtime
