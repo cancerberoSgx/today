@@ -7,19 +7,21 @@ class Today
 
   def initialize
     Today.initialize
-    s = File.open(today_file, 'r').read
+    s = File.open(Today.file, 'r').read
     @data = JSONParse(s)
   end
 
-  def self.initialize
-    folder = today_folder
-    FileUtils.mkdir_p folder unless File.directory?(folder)
-    today = today_file
-    s = JSONStringify(today_initial_state)
-    File.open(today, 'w') { |f| f.puts(s) } unless File.exist? today
+  def data
+    @data
   end
 
-  def self.today_initial_state
+  def self.initialize
+    FileUtils.mkdir_p folder unless File.directory?(folder)
+    s = JSONStringify(initial_state)
+    File.open(file, 'w') { |f| f.puts(s) } unless File.exist? file
+  end
+
+  def self.initial_state
     {
       session: 'default',
       todos: []
@@ -27,13 +29,13 @@ class Today
   end
 
   # @return [String]
-  def self.today_folder
+  def self.folder
     File.join ENV['HOME'], '.today'
   end
 
   # @return [String]
-  def self.today_file
-    File.join today_folder, "#{today_id}.json"
+  def self.file
+    File.join folder, "#{today_id}.json"
   end
 
   def self.today_id
