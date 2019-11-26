@@ -16,8 +16,8 @@ def parseArgs(args)
     { cmd: "list_todos" }
   elsif args[0] == "add"
     if args.length < 2 
-      # TODO: ask title
-      { cmd: "add_todo", title: 'TODO: ask title'}
+      print 'Title: '
+      { cmd: "add_todo", title: STDIN.gets.strip}
     else
       { cmd: "add_todo", title: args[1] }
     end
@@ -27,8 +27,10 @@ def parseArgs(args)
     { cmd: "reset" }
   elsif args[0] == "check"
     if args.length < 2 
-      # TODO: ask index
-      { cmd: "check_todo", index: 0}
+      print 'Index: '
+      index = STDIN.gets.strip
+      # TODO: check valid integer input
+      { cmd: "check_todo", index: index.to_i}
     else
       { cmd: "check_todo" , index:  args[1].to_i}
     end
@@ -39,3 +41,9 @@ def parseArgs(args)
   end
 end
 
+# def askTitle
+#   puts "Hi! Welcome to the wonderful world of Ruby programming."
+#   puts "Please enter your name so that we can greet you more personally:"
+#   name = STDIN.gets.strip
+# end
+# # askTitle
