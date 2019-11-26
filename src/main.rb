@@ -13,7 +13,9 @@ def main
   elsif cmd[:cmd] == 'add_todo'
     add_todo cmd[:title] || 'Unammed task'
   elsif cmd[:cmd] == 'check_todo'
-    check_todo cmd[:index] || 0
+    check_todo cmd[:index] || 0  
+  elsif cmd[:cmd] == 'reset'
+    reset
   else
     print 'Error'
   end
@@ -35,7 +37,11 @@ def add_todo(title)
   printString today.todos.print
   today.save
 end
-
+def reset
+  Today.reset
+  today = Today.new
+  printString today.todos.print
+end
 def check_todo(index)
   today = Today.new
   # TODO: check out of range / print error

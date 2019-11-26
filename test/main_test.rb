@@ -28,5 +28,11 @@ class MainTest < Test::Unit::TestCase
     assert_include `ruby exe/today check 0`, '[x] first', 'should check'
     assert_include `ruby exe/today check 0`, '[ ] first', 'should uncheck'
   end  
+  def test_reset
+    Today.resetAndCreate
+    assert_include  `ruby exe/today`, 'No tasks', 'No tasks'
+    assert_include  `ruby exe/today add first`, '[ ] first', 'should add'
+    assert_include  `ruby exe/today reset`, 'No tasks', 'should reset'
+  end 
 end
  
