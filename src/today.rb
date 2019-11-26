@@ -1,10 +1,8 @@
-# typed: ignore
-
 require 'fileutils'
 require_relative 'util'
 require_relative 'todo'
 
-# TODO
+# responsible of data store in file system
 class Today
   attr_reader :todos, :session
 

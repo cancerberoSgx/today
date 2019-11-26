@@ -1,5 +1,3 @@
-# typed: true
-
 require_relative 'util'
 require_relative 'today'
 
@@ -13,7 +11,6 @@ require_relative 'today'
 # today share foo@bar.com
 # today share foo@bar.com,a@another.com
 # today calendar
-# today calendar 1
 def parseArgs(args)
   if args.length == 0
     { cmd: 'list_todos' }

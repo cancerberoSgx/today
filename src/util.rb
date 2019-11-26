@@ -1,4 +1,3 @@
-# typed: true
 require 'json'
 
 def JSONParse(str)

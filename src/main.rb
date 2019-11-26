@@ -1,5 +1,3 @@
-# typed: strict
-
 # responsible of interpret the cmds, and render Today to stdout
 
 require_relative 'parse_args'

@@ -1,5 +1,3 @@
-# typed: ignore
-
 require_relative 'todo_renderer'
 
 # List of todos. delegates rendering to @renderer (TodoRenderer)

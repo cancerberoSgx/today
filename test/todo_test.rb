@@ -1,8 +1,6 @@
 # typed: true
 require 'test/unit'
-# require 'test/unit/assertions'
 include Test::Unit::Assertions
-require_relative 'today_test'
 
 class TodoTest < Test::Unit::TestCase
   def test_add
@@ -16,7 +14,6 @@ class TodoTest < Test::Unit::TestCase
     assert_not_empty todos.todos
     assert_equal todos.todos[0], todo
   end
-
   # tests againts the default TodoRenderer
   def test_renderer
     todos = Today.resetAndCreate.todos
@@ -25,6 +22,5 @@ class TodoTest < Test::Unit::TestCase
     assert_include(todos.print, '[ ] test_renderer1')
     todos.add(Todo.new 'test_renderer2', 'test_renderer2 description')
     assert_include(todos.print, '[ ] test_renderer2')
-    # print todos.print
   end
 end

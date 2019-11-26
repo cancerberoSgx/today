@@ -1,4 +1,3 @@
-# typed: true
 # default Todo renderer (command line strings)
 # subclass it to customize checkboxes, labels, etc
 class TodoRenderer
