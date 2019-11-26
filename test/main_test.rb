@@ -22,5 +22,11 @@ class MainTest < Test::Unit::TestCase
     Today.resetAndCreate
     assert_match /Error/, `ruby exe/today notrecognized`, 'should show error msg'
   end  
+  def test_todo_check
+    Today.resetAndCreate
+    assert_include  `ruby exe/today add first`, '[ ] first', 'should add'
+    assert_include `ruby exe/today check 0`, '[x] first', 'should check'
+    assert_include `ruby exe/today check 0`, '[ ] first', 'should uncheck'
+  end  
 end
  

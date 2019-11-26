@@ -25,6 +25,6 @@ class TodoTest < Test::Unit::TestCase
     assert_include(todos.print, '[ ] test_renderer1')
     todos.add(Todo.new 'test_renderer2', 'test_renderer2 description')
     assert_include(todos.print, '[ ] test_renderer2')
-    print todos.print
+    # print todos.print
   end
 end

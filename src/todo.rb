@@ -13,8 +13,8 @@ class Todos
   def add(todo)
     @todos.push(todo)
   end
-  def check(index)
-    @todos[index].checked = true
+  def check(index, checked=true)
+    @todos[index].checked = checked
   end
   def serialize
     @todos.map {|todo| todo.serialize}
@@ -31,14 +31,14 @@ end
 
 # to-do representation
 class Todo
-  attr_reader :title, :description, :checked
+  attr_accessor :title, :description, :checked
   def initialize(title='Untitled', description='TODO', checked= false)
     @title = title
     @description = description
     @checked = checked
   end
   def serialize
-    {title: @title, description: @description, checked: @checked}
+    { title: @title, description: @description, checked: @checked }
   end
   # def print
   #   "#{@checked ? '[x]' : '[ ]'} #{@title}"

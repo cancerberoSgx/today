@@ -12,6 +12,8 @@ def main
     list_todos    
   elsif cmd[:cmd] == 'add_todo'
     add_todo cmd[:title] || 'Unammed task'
+  elsif cmd[:cmd] == 'check_todo'
+    check_todo cmd[:index] || 0
   else
     print 'Error'
   end
@@ -30,6 +32,15 @@ end
 def add_todo(title)
   today = Today.new
   today.todos.add Todo.new title
+  printString today.todos.print
+  today.save
+end
+
+def check_todo(index)
+  today = Today.new
+  # TODO: check out of range / print error
+  todo = today.todos.todos[index]
+  todo.checked = !todo.checked
   printString today.todos.print
   today.save
 end

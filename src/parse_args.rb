@@ -26,7 +26,12 @@ def parseArgs(args)
   elsif args[0] == "reset"
     { cmd: "reset" }
   elsif args[0] == "check"
-    { cmd: "check_todo" }
+    if args.length < 2 
+      # TODO: ask index
+      { cmd: "check_todo", index: 0}
+    else
+      { cmd: "check_todo" , index:  args[1].to_i}
+    end
   elsif args[0] == "share"
     { cmd: "share_todos" }
   else

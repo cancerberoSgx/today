@@ -60,6 +60,7 @@ $ today calendar
 
 # TODO
 
+ * merge past unchecked TODOs in today's new day file
  * multiple sessions 
    * same file contains array of Today
    * `today set dev` sets a session ('dev') for future commands
