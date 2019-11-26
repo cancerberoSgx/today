@@ -14,7 +14,7 @@ class TodoTest < Test::Unit::TestCase
     assert_not_empty todos.todos
     assert_equal todos.todos[0], todo
   end
-  # tests againts the default TodoRenderer
+  # tests againts the default DefaultRenderer
   def test_renderer
     todos = Today.resetAndCreate.todos
     assert_include(todos.print, 'No tasks')

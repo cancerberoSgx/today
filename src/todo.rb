@@ -1,12 +1,12 @@
-require_relative 'todo_renderer'
+require_relative 'renderer'
 
-# List of todos. delegates rendering to @renderer (TodoRenderer)
+# List of todos. delegates rendering to @renderer (DefaultRenderer)
 class Todos
   attr_reader :todos
   attr_writer :renderer
   def initialize todos
     @todos = todos
-    @renderer = TodoRenderer.new
+    @renderer = DefaultRenderer.new
   end
   def add(todo)
     @todos.push(todo)
@@ -38,36 +38,4 @@ class Todo
   def serialize
     { title: @title, description: @description, checked: @checked }
   end
-  # def print
-  #   "#{@checked ? '[x]' : '[ ]'} #{@title}"
-  # end
 end
-
-# # default Todo renderer (command line strings). subclass it to customize checkboxes, labels, etc
-# class TodoRenderer
-#   def render(todo)
-#     " #{checked(todo)} #{title(todo)}"
-#   end
-#   def checked(todo)
-#     "#{todo.checked ? '[x]' : '[ ]'}"
-#   end
-#   def title(todo)
-#     "#{todo.title}"
-#   end
-#   # render a list of todos
-#   def list(todos)
-#     todos.map {|todo| render(todo)}
-#   end
-#   # no-tasks message
-#   def empty
-#     'No tasks'
-#   end
-# end
-
-
-# # require 'json'
-# # puts JSON.parse('{"a": 123w}')
-# #
-# # my_hash = {:hello => "goodbye"}
-# # puts JSON.generate(my_hash) => "{\"hello\":\"goodbye\"}"
-# #
