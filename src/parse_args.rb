@@ -22,7 +22,9 @@ def parseArgs(args)
       { cmd: "add_todo", title: args[1] }
     end
   elsif args[0] == "help"
-    { cmd: "help" }
+    { cmd: "help" }  
+  elsif args[0] == "reset"
+    { cmd: "reset" }
   elsif args[0] == "check"
     { cmd: "check_todo" }
   elsif args[0] == "share"
