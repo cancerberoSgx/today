@@ -22,3 +22,22 @@
 #   end
 # end
 # askTitle2
+
+# print Integer('1asd')
+# title = gets.strip.to_i
+# puts title
+
+# def parse_integer(s, default=nil)
+#   begin
+#     Integer(s)
+#   rescue => exception
+#     default
+#   end
+# end
+
+# print parse_integer '1as', 'nan'
+
+# require_relative '../src/util'
+
+# i=inquire_integer
+# print i

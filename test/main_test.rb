@@ -3,7 +3,6 @@ require "test/unit"
 include Test::Unit::Assertions
 require_relative '../src/today'
 require_relative '../src/todo'
-require_relative 'today_test'
 require 'fileutils'
 
 class MainTest < Test::Unit::TestCase
