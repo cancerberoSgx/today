@@ -1,27 +1,5 @@
-# default Todo renderer (command line strings)
-# subclass it to customize checkboxes, labels, etc
-class DefaultRenderer
-  def render(todo)
-    " #{checked(todo)} #{title(todo)}"
-  end
-  def checked(todo)
-    "#{todo.checked ? '[x]' : '[ ]'}"
-  end
-  def title(todo)
-    "#{todo.title}"
-  end
-  # render a list of todos
-  def list(todos)
-    todos.map {|todo| render(todo)}
-  end
-  # no-tasks message
-  def empty
-    'No tasks'
-  end
-  def id
-    'default'
-  end
-end
+require_relative 'renderer_default'
+require_relative 'renderer_cool'
 
 def register_renderer(renderer)
   @renderers.push(renderer)
@@ -44,7 +22,7 @@ end
 def init_renderers
   # init
   register_renderer(@instance)
-  register_renderer(@instance)
+  register_renderer(CoolRenderer.new)
 end
 init_renderers
 # @instance=nil

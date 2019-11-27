@@ -6,3 +6,4 @@ gem 'rainbow', '~> 3.0'
 gem 'sorbet', :group => :development
 gem 'filewatcher', :group => :development
 gem 'sorbet-runtime'
+gem 'ansi'
