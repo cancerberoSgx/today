@@ -1,4 +1,5 @@
 require 'json'
+require "date"
 
 def JSONParse(str)
   JSON.parse(str)
@@ -34,22 +35,7 @@ def inquire_string(title='Title: ')
   STDIN.gets.strip
 end
 
-
-# def inquire_integer(title='Index: ', wrong='Number expected', min=nil, max=nil)
-#   print title
-#   while (i = parse_integer STDIN.gets.strip) == nil && (min==nil||i==nil||i>=min) && (max==nil||i==nil||i<=max)
-#     if min!=nil && i!=nil && i<min
-#       print "Must be greater than #{min-1}. #{title}"
-#     elsif max!=nil&&i!=nil&&i>max
-#       print "Must be lower than #{max+1}. #{title}"
-#     else
-#       print "#{wrong}. #{title}"
-#     end
-#   end
-#   i
-# end
-
-# def inquire_index
-#   today = Today.new
-#   inquire_integer 'Index: ', 'Integer expected', 0, today.todos.todos.length-1
-# end
+def today_zero_hour
+  now = DateTime.now
+  Date.new(now.year,now.month,now.mday)
+end

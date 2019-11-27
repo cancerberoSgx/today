@@ -1,21 +1,21 @@
 # default Todo renderer (command line strings)
 # subclass it to customize checkboxes, labels, etc
 class DefaultRenderer
-  def render(todo)
-    " #{checked(todo)} #{title(todo)}"
+  def todo(todo)
+    " #{todo_checked(todo)} #{todo_title(todo)}"
   end
-  def checked(todo)
+  def todo_checked(todo)
     "#{todo.checked ? '[x]' : '[ ]'}"
   end
-  def title(todo)
+  def todo_title(todo)
     "#{todo.title}"
   end
   # render a list of todos
-  def list(todos)
-    todos.map {|todo| render(todo)}
+  def render_todos(todos)
+    todos.map {|todo| todo(todo)}
   end
   # no-tasks message
-  def empty
+  def todo_empty
     'No tasks'
   end
   def id

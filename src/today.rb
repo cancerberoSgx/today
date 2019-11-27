@@ -52,6 +52,7 @@ class Today
   def self.reset
     FileUtils.rm_rf Today.folder
   end
+  
   def self.resetAndCreate
     reset
     Today.new

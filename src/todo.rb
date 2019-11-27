@@ -19,11 +19,11 @@ class Todos
   end
   def print
     if @todos.empty?
-      @renderer.empty
+      @renderer.todo_empty
     else
-      todos = @renderer.list(@todos)
+      todos = @renderer.render_todos(@todos)
       todos.join '\n'
-    end
+    end 
   end
 end
 

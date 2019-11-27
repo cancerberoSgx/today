@@ -4,6 +4,7 @@ require_relative 'renderer_cool'
 def register_renderer(renderer)
   @renderers.push(renderer)
 end
+
 def renderer
   @instance 
 end
@@ -20,10 +21,7 @@ end
 @renderers = []
 @instance=DefaultRenderer.new
 def init_renderers
-  # init
   register_renderer(@instance)
   register_renderer(CoolRenderer.new)
 end
 init_renderers
-# @instance=nil
-# @instance=renderer
