@@ -1,13 +1,14 @@
-require_relative 'renderer_default'
-require_relative 'renderer_cool'
+# require_relative 'renderer_default'
+# require_relative 'renderer_cool'
+require_relative 'renderer'
 
 # List of todos. delegates rendering to @renderer (DefaultRenderer)
 class Todos
   attr_accessor :todos, :renderer
-  def initialize todos
+  def initialize(todos, id='default')
     @todos = todos
-    @renderer = CoolRenderer.new
-    # @renderer = DefaultRenderer.new
+    @renderer = DefaultRenderer.new
+    # @renderer = renderer_named id
   end
   def add(todo)
     @todos.push(todo)

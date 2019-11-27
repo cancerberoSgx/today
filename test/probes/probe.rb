@@ -1,5 +1,13 @@
 # typed: true
 
+def f
+  return 1, 'dos'
+end
+
+a, b = f
+
+print a
+print b
 
 puts 0x1d434.to_s
 # 

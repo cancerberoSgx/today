@@ -1,6 +1,8 @@
-# require_relative 'renderer_default'
-# require_relative 'renderer_cool'
-
+require_relative 'renderer_default'
+require_relative 'renderer_cool'
+def renderer_named(id)
+  id=='cool' ? CoolRenderer.new : DefaultRenderer.new 
+end
 # def register_renderer(renderer)
 #   @renderers.push(renderer)
 # end

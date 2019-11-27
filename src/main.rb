@@ -6,6 +6,7 @@ require_relative 'todo'
 require_relative 'util'
 require_relative 'calendar'
 require_relative 'month'
+require_relative 'renderer'
  
 def main
   cmd = parseArgs(ARGV)
@@ -25,6 +26,8 @@ def main
     month true
   elsif cmd[:cmd] == 'calendar'
     calendar
+  elsif cmd[:cmd] == 'renderer'
+    renderer cmd[:id]
   else
     print 'Error'
   end
@@ -33,6 +36,14 @@ end
 def list_todos
   today = Today.new
   print_string today.todos.print 
+end
+
+def renderer(id)
+  today = Today.new
+  today.renderer=renderer_named id
+  today.todos.renderer=today.renderer
+  print_string today.todos.print
+  today.save
 end
 
 def add_todo(title)
@@ -63,15 +74,16 @@ today: manage personal TODO lists and check google calendar with the command lin
 
 Usage examples: 
 
-  today
+  today               # list todos
   today add
-  today add 'a task for today'
+  today add 'task 1'
   today check
   today check 0
   today calendar
   today month
   today year
   today reset
+  today renderer cool
   today help
 "
 end

@@ -36,5 +36,11 @@ class MainTest < Test::Unit::TestCase
     Today.resetAndCreate
     assert_include `ruby exe/today help`, 'Usage', 'should print help message and exit'
   end 
+  def test_renderer
+    Today.resetAndCreate
+    assert_include `ruby exe/today add first`, '[ ] first', 'should print default by default'
+    # assert_include `ruby exe/today add first`, '[ ] first', 'should print default'
+    assert_include `ruby exe/today renderer cool`, '[ ] first', 'should print cool'
+  end 
 end
  

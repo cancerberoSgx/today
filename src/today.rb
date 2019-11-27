@@ -1,21 +1,27 @@
 require 'fileutils'
 require_relative 'util'
 require_relative 'todo'
+require_relative 'renderer'
 
 # responsible of data store in file system
 class Today
-  attr_reader :todos, :session
+  attr_accessor :todos, :session, :renderer
   def initialize(session=Today.initial_state['session'])
     Today.initialize
     s = File.open(Today.file, 'r').read
     data = JSONParse(s)
+    @renderer = renderer_named data['renderer']
     @todos = Todos.new data['todos'].map {|todo| Todo.new todo['title'], todo['description'], todo['checked']}
+    @todos.renderer=@renderer
     @session = data['session']
+    
+    # print data['renderer']
   end
   def serialize
     {
       session: @session,
-      todos: @todos.serialize
+      todos: @todos.serialize,
+      renderer: @renderer.id
     }
   end
   def save
@@ -28,7 +34,8 @@ class Today
   def self.initial_state(session='default')
     {
       session: session,
-      todos: []
+      todos: [],
+      renderer: 'default'
     }
   end
   def self.folder
@@ -45,6 +52,8 @@ class Today
   end
   def self.resetAndCreate
     reset
-    Today.new
+    today = Today.new
+    today.todos.renderer = DefaultRenderer.new
+    today
   end
 end

@@ -2,6 +2,7 @@ require_relative 'util'
 require_relative 'today'
 
 def parseArgs(args)
+  # args, options = parse_options
   if args.length == 0
     { cmd: 'list_todos' }
   elsif args[0] == 'add'
@@ -25,8 +26,37 @@ def parseArgs(args)
   elsif args[0] == 'month'
     { cmd: 'month' }  
   elsif args[0] == 'year'
-    { cmd: 'year' }  
+    { cmd: 'year' }
+  elsif args[0] == 'renderer'
+    { 
+      cmd: 'renderer',
+    id: args.length < 2 ? inquire_string : args[1]
+   }  
+    
   else
     {}
   end
 end
+
+# def parse_options(args)
+#   i=0
+#   a=args.clone
+#   while i<a.length do
+#     [].sort
+#   end
+
+#   options  = []
+#   for i in (0..args.length) do
+#     arg=args[i]
+#     if arg.start_with '--'
+#       [].extend.each_slice
+#     end
+#   end
+#   # args.each_index{|i|
+#   # end
+#   # }
+#   # args.ea
+#   # for arg in enumerable do
+    
+#   # end
+# end
