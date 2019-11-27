@@ -5,17 +5,10 @@
 
 require 'erb'
 
-# x = 42
 todos=[
   {title: 'first', checked: false},
   {title: 'second', checked: true}
 ]
-# template = ERB.new <<-EOF
-#   The value of x is: <%= x %>
-# EOF
-# puts template.result(binding)
-
-
 template = %q{
   % todos.each do |todo|
    <%= todo[:checked] ? '✓' : 'x' %> <%= todo[:title] %>

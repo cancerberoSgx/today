@@ -1,16 +1,6 @@
 require_relative 'util'
 require_relative 'today'
 
-# examples: 
-# today
-# today help
-# today add 'optimize addToCart()'
-# today check 2
-# today check 2,3,4
-# today check all
-# today share foo@bar.com
-# today share foo@bar.com,a@another.com
-# today calendar
 def parseArgs(args)
   if args.length == 0
     { cmd: 'list_todos' }
@@ -27,12 +17,15 @@ def parseArgs(args)
     { cmd: 'reset' }
   elsif args[0] == 'check'
     # TODO: check valid integer input
-    { 
+    # TODO: validate args[1] to be integer and in range
+    {
       cmd: 'check_todo', 
-      index: args.length < 2 ? inquire_integer : args[1].to_i # TODO: validate args[1] to be integer and in range
+      index: args.length < 2 ? inquire_integer : args[1].to_i
     }
-  # elsif args[0] == 'share'
-  #   { cmd: 'share_todos' }
+  elsif args[0] == 'month'
+    { cmd: 'month' }  
+  elsif args[0] == 'year'
+    { cmd: 'year' }  
   else
     {}
   end

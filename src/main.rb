@@ -5,6 +5,7 @@ require_relative 'today'
 require_relative 'todo'
 require_relative 'util'
 require_relative 'calendar'
+require_relative 'month'
  
 def main
   cmd = parseArgs(ARGV)
@@ -18,6 +19,10 @@ def main
     reset 
   elsif cmd[:cmd] == 'help'
     help
+  elsif cmd[:cmd] == 'month'
+    month
+  elsif cmd[:cmd] == 'year'
+    month true
   elsif cmd[:cmd] == 'calendar'
     calendar
   else
@@ -64,6 +69,8 @@ Usage examples:
   today check
   today check 0
   today calendar
+  today month
+  today year
   today reset
   today help
 "
@@ -73,9 +80,8 @@ def calendar
   today = Today.new
   calendar = Calendar.new
   print_string today.todos.renderer.render_events calendar.next_events
-  # sep = '\n * '
-  # events = [{summary: 'hello'}] 
-  # s="#{sep}#{(events.map {|event|event[:summary]}).join(sep)}"
-  # # s = today.todos.renderer.render_events 
-  # print_string s
+end
+
+def month(year=false)
+  print_string Month.render year
 end

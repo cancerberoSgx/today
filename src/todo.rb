@@ -6,8 +6,8 @@ class Todos
   attr_accessor :todos, :renderer
   def initialize todos
     @todos = todos
-    # @renderer = CoolRenderer.new
-    @renderer = DefaultRenderer.new
+    @renderer = CoolRenderer.new
+    # @renderer = DefaultRenderer.new
   end
   def add(todo)
     @todos.push(todo)
