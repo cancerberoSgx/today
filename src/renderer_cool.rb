@@ -2,7 +2,7 @@ require_relative 'renderer'
 require 'erb'
 
 class CoolRenderer < DefaultRenderer
-  def list(todos)
+  def render_todos(todos)
     template = %q{
       % todos.each do |todo|
       <%= todo[:checked] ? '✓' : 'x' %> <%= todo[:title] %>

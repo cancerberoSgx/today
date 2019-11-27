@@ -1,10 +1,12 @@
-require_relative 'renderer'
+require_relative 'renderer_default'
+require_relative 'renderer_cool'
 
 # List of todos. delegates rendering to @renderer (DefaultRenderer)
 class Todos
   attr_accessor :todos, :renderer
   def initialize todos
     @todos = todos
+    # @renderer = CoolRenderer.new
     @renderer = DefaultRenderer.new
   end
   def add(todo)
