@@ -2,8 +2,7 @@ require_relative 'renderer'
 
 # List of todos. delegates rendering to @renderer (DefaultRenderer)
 class Todos
-  attr_reader :todos
-  attr_writer :renderer
+  attr_accessor :todos, :renderer
   def initialize todos
     @todos = todos
     @renderer = DefaultRenderer.new

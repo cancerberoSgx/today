@@ -70,6 +70,12 @@ Usage examples:
 end
 
 def calendar
+  today = Today.new
   calendar = Calendar.new
-  calendar.next_events
+  print_string today.todos.renderer.render_events calendar.next_events
+  # sep = '\n * '
+  # events = [{summary: 'hello'}] 
+  # s="#{sep}#{(events.map {|event|event[:summary]}).join(sep)}"
+  # # s = today.todos.renderer.render_events 
+  # print_string s
 end
