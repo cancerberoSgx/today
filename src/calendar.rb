@@ -20,7 +20,6 @@ class Calendar
     else
     end
   end
-
   ##
   # Ensure valid credentials, either by restoring from the saved credentials
   # files or intitiating an OAuth2 authorization. If authorization is required,
@@ -38,13 +37,12 @@ class Calendar
       puts "Open the following URL in the browser and enter the " \
           "resulting code after authorization:\n\n" + url
       print 'Code: '
-      code = gets
+      code = STDIN.gets
       credentials = authorizer.get_and_store_credentials_from_code(
         user_id: user_id, code: code, base_url: OOB_URI
       )
     end
   end
-
   def next_events
     # Initialize the API
     service = Google::Apis::CalendarV3::CalendarService.new
@@ -53,7 +51,7 @@ class Calendar
     # Fetch the next 10 events for the user
     calendar_id = "primary"
     response = service.list_events(calendar_id, max_results: 10, single_events: true, 
-      order_by: "startTime", time_min: DateTime.now.rfc3339)
+      order_by: "startTime", time_min: today_zero_hour.rfc3339, time_max: (today_zero_hour + 1).rfc3339)
     puts "Upcoming events:"
     puts "No upcoming events found" if response.items.empty?
     response.items.each do |event|

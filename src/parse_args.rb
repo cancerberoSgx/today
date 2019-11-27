@@ -20,7 +20,9 @@ def parseArgs(args)
       title: args.length < 2 ? inquire_string : args[1]
     }
   elsif args[0] == 'help'
-    { cmd: 'help' }  
+    { cmd: 'help' }    
+  elsif args[0] == 'calendar'
+    { cmd: 'calendar' }  
   elsif args[0] == 'reset'
     { cmd: 'reset' }
   elsif args[0] == 'check'
@@ -29,8 +31,8 @@ def parseArgs(args)
       cmd: 'check_todo', 
       index: args.length < 2 ? inquire_integer : args[1].to_i # TODO: validate args[1] to be integer and in range
     }
-  elsif args[0] == 'share'
-    { cmd: 'share_todos' }
+  # elsif args[0] == 'share'
+  #   { cmd: 'share_todos' }
   else
     {}
   end

@@ -28,9 +28,13 @@ class MainTest < Test::Unit::TestCase
   end
   def test_reset
     Today.resetAndCreate
-    assert_include `ruby exe/today`, 'No tasks', 'No tasks'
+    assert_include `ruby exe/today`, 'No tasks', 'should print no-tasks message'
     assert_include `ruby exe/today add first`, '[ ] first', 'should add'
     assert_include `ruby exe/today reset`, 'No tasks', 'should reset'
+  end   
+  def test_help
+    Today.resetAndCreate
+    assert_include `ruby exe/today help`, 'Usage', 'should print help message and exit'
   end 
 end
  

@@ -37,5 +37,5 @@ end
 
 def today_zero_hour
   now = DateTime.now
-  Date.new(now.year,now.month,now.mday)
+  Date.new(now.year, now.month, now.mday)
 end

@@ -4,6 +4,7 @@ require_relative 'parse_args'
 require_relative 'today'
 require_relative 'todo'
 require_relative 'util'
+require_relative 'calendar'
  
 def main
   cmd = parseArgs(ARGV)
@@ -14,7 +15,11 @@ def main
   elsif cmd[:cmd] == 'check_todo'
     check_todo cmd[:index] || 0  
   elsif cmd[:cmd] == 'reset'
-    reset
+    reset 
+  elsif cmd[:cmd] == 'help'
+    help
+  elsif cmd[:cmd] == 'calendar'
+    calendar
   else
     print 'Error'
   end
@@ -31,11 +36,13 @@ def add_todo(title)
   print_string today.todos.print
   today.save
 end
+
 def reset
   Today.reset
   today = Today.new
   print_string today.todos.print
 end
+
 def check_todo(index)
   today = Today.new
   # TODO: check out of range / print error
@@ -43,4 +50,26 @@ def check_todo(index)
   todo.checked = !todo.checked
   print_string today.todos.print
   today.save
+end
+
+def help
+  print "
+today: manage personal TODO lists and check google calendar with the command line
+
+Usage examples: 
+
+  today
+  today add
+  today add 'a task for today'
+  today check
+  today check 0
+  today calendar
+  today reset
+  today help
+"
+end
+
+def calendar
+  calendar = Calendar.new
+  calendar.next_events
 end
