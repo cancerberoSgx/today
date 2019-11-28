@@ -25,11 +25,11 @@ class DefaultRenderer
   end
   def render_events(items)
     today = Today.new
-    if response.items.empty?
+    if items.empty?
       'No events for today'
     else
       sep = '\n * '
-      "Today's events:#{sep}#{(items.map {|event|event.summary}).join(sep)}"
+      "Today's events:#{sep}#{(items.map {|event| "#{event.summary} (#{event.start.date || event.start.date_time})"}).join(sep)}"
     end
   end
 end

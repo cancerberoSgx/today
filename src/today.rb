@@ -14,8 +14,6 @@ class Today
     @todos = Todos.new data['todos'].map {|todo| Todo.new todo['title'], todo['description'], todo['checked']}
     @todos.renderer=@renderer
     @session = data['session']
-    
-    # print data['renderer']
   end
   def serialize
     {
