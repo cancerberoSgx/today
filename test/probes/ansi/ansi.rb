@@ -42,7 +42,7 @@ class R
       s+=(ch*w)
     }
     s+'X'
-  end
+  end 
 end
 
 # puts 'l'*5
