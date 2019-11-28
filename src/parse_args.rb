@@ -38,6 +38,22 @@ def parseArgs(args)
   end
 end
 
+
+
+# class Array
+#   def splice(start, len, *replace)
+#     ret = self[start, len]
+#     self[start, len] = replace
+#     retn
+#   end
+# end
+
+# class Args
+
+# end
+
+
+
 # def parse_options(args)
 #   i=0
 #   a=args.clone

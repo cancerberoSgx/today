@@ -39,8 +39,8 @@ class MainTest < Test::Unit::TestCase
   def test_renderer
     Today.resetAndCreate
     assert_include `ruby exe/today add first`, '[ ] first', 'should print default by default'
-    # assert_include `ruby exe/today add first`, '[ ] first', 'should print default'
-    assert_include `ruby exe/today renderer cool`, '[ ] first', 'should print cool'
+    assert_include `ruby exe/today renderer cool`, " \e[31m✖\e[0m first", 'should print cool'
+    assert_include `ruby exe/today add second`, " \e[31m✖\e[0m second", 'should print cool next time'
   end 
 end
  

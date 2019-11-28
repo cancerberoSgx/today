@@ -86,3 +86,9 @@ $ today calendar
 Nice to have: optionally synchronize today's TODO with trello instead of keeping the info locally.
 
 Nice to have: if user gives an extra number argument, the action will apply to other day than today, for example `today calendar 1` will show tomorrow's activities, or, `today -1` will show yesterday's TODOs.
+
+## What did I learn?
+
+ * basic ruby syntax, class declaration, inheritance, control statements, array manipulations
+ * Gemfile, bundler, dependencies, libraries
+ * ansi, erb, command line args processing, google api, rubywatcher for TDD

@@ -78,8 +78,3 @@ class Month
   end
 
 end
-
-# if __FILE__ == $0
-#   puts Month.render true
-#   puts Month.render false
-# end
